@@ -1,0 +1,47 @@
+
+#### torrent database
+
+A dump from bittorrent's DHT network and a few trackers, no content, just
+metadata.
+
+I created this dump to help the security community track and analyze all kinds
+of malware and trojans that might be potentially included in files shared via
+torrent protocol, and to track down leaks resulting from data breaches.
+
+This dump can also be used by copyright owners to see if their copyright is
+being infringed upon. Most torrent sites don't show full information about what
+is shared via torrent protocol and this dump can help to discover also files
+that are actively shared, but weren't placed on popular torrent sharing sites.
+
+This is just a dump from DHT network and a few trackers. Everyone who connects
+to DHT network can see all the information presented here and more. If you
+think some hash value shouldn't be presented here, please track down the IP
+addresses putting the content on the DHT network and force them to stop doing
+that. After that the hash will automatically be excluded from this list.
+
+
+#### file structure
+
+Tab separated columns:
+
+info hash	unique torrent fingerprint
+total size	total torrent data size in MB
+files		number of files in the torrent
+name		name of the torrent
+
+
+#### usage
+
+This repository is updated hourly.
+
+To search for potentially malicious ubuntu images just type e.g.:
+$ grep -hi 'ubuntu.*20\.04' tdb_*.tsv
+
+To be able to search for malware fingerprints you can do something like this:
+$ transmission-remote -a magnet:?xt=urn:btih:<hash_value>
+
+
+#### other
+
+I hope this repository will make the world a safer place.
+
